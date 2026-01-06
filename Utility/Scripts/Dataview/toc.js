@@ -15,15 +15,19 @@ dv.view('toc', {
 })
 ```
 */
-const startAtLevel = input?.level || 2
-const content = await dv.io.load(dv.current().file.path)
-const toc = content.match(new RegExp(`^#{${startAtLevel},} \\S.*`, 'mg'))
-    .map(heading => {
-        const [_, level, text] = heading.match(/^(#+) (.+)$/)
-        const link = dv.current().file.path + '#' + text
-        return '\t'.repeat(level.length - startAtLevel) + `${input?.style || '1.'} [[${link}|${text}]]`
-    })
+const startAtLevel = input?.level || 2;
+const content = await dv.io.load(dv.current().file.path);
+const toc = content
+  .match(new RegExp(`^#{${startAtLevel},} \\S.*`, "mg"))
+  .map((heading) => {
+    const [_, level, text] = heading.match(/^(#+) (.+)$/);
+    const link = dv.current().file.path + "#" + text;
+    return (
+      "\t".repeat(level.length - startAtLevel) +
+      `${input?.style || "1."} [[${link}|${text}]]`
+    );
+  });
 if (input?.heading !== false) {
-    dv.header(2, 'Table of contents')
+  dv.header(2, "Table of contents");
 }
-dv.paragraph(toc.join('\n'))
+dv.paragraph(toc.join("\n"));
