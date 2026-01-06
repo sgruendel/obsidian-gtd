@@ -207,3 +207,5 @@ taskList(Groups.Priority, "🔼 Priority");
 taskList(Groups.Waiting, "⏳ Waiting on...");
 taskList(Groups.Normal, "✅ Next actions");
 taskList(Groups.Someday, "💤 Someday");
+taskList(Groups.Normal, "� Home", "#contexts/home");
+taskList(Groups.Normal, "�🏢 Work", "#contexts/work");
